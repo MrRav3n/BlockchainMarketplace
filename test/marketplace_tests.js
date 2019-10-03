@@ -34,9 +34,10 @@ contract('Marketplace', ([seller, buyer]) => {
             assert.equal(result.id, 0)
             assert.equal(result.owner, buyer)
             assert.equal(result.isBought, true)
-            await marketplace.buyProduct(0, {from: seller}).should.be.rejected;
-            await marketplace.buyProduct(1, {from: buyer}).should.be.rejected;
-            await marketplace.buyProduct(-1, {from: buyer}).should.be.rejected;
+            await marketplace.buyProduct(0, {from: 		seller, value: 	20000000000000000000}).should.be.rejected;
+            await marketplace.buyProduct(1, {from:		buyer, 	value: 	20000000000000000000}).should.be.rejected;
+            await marketplace.buyProduct(-1, {from: 	buyer, 	value: 	20000000000000000000}).should.be.rejected;
+			 await marketplace.buyProduct(-1, {from: 	buyer, 	value: 	2000000000000000000}).should.be.rejected;
         })
     })
 })
